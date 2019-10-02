@@ -1,0 +1,27 @@
+{
+  "name": "genericapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristiandepena/GenericApp.git"
+  },
+  "author": "Cristian A. De Peña",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cristiandepena/GenericApp/issues"
+  },
+  "homepage": "https://github.com/cristiandepena/GenericApp#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
