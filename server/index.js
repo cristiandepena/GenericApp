@@ -29,14 +29,13 @@ function validateCredentials(username, password) {
 
 // Routes
 app.post('/authorize', (req, res) => {
-  const { txtUsername, txtPassword } = req.body;
-
-  if (validateCredentials(txtUsername, txtPassword)) {
+  const { username, password } = req.body;
+  if (validateCredentials(username, password)) {
     res.send(true);
-    console.log(`Welcome ${txtUsername}! Your password is: ${txtPassword}`);
+    console.log(`Welcome ${username}! Your password is: ${password}`);
   } else {
     console.log('Failed');
-    res.sendFile(`${appDir}index.html`);
+    res.send(false);
   }
 });
 
