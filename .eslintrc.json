@@ -10,13 +10,19 @@
     ],
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
+        "$": "readonly"
     },
     "parserOptions": {
         "ecmaVersion": 2018
     },
     "rules": {
-        "linebreak-style":["error","windows"],
-        "no-console":[0]
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        "no-console": [
+            0
+        ]
     }
 }
