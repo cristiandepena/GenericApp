@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 
 const app = express();
 const port = 8001;
@@ -18,10 +19,15 @@ function validateCredentials(username, password) {
   let passed = false;
   if (username == null || username.toString().length <= 0) {
     console.log('Username not valid, please try again...');
-    if (password == null || password.toString().length <= 0) {
-      console.log('Password not valid, please try again...');
-    }
+  } else if (password == null || password.toString().length <= 0) {
+    console.log('Password not valid, please try again...');
   } else {
+    const users = fs.readFileSync(path.join(dir, 'users.json'));
+    const { username: user, password: pw } = JSON.parse(users);
+
+    if (username === user && password === pw) {
+      console.log(`${user} ${pw}`);
+    }
     passed = true;
   }
   return passed;
