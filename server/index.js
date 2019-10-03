@@ -14,11 +14,30 @@ app.use(bodyParser.json());
 
 app.use(express.static(appDir));
 
+function validateCredentials(username, password) {
+  let passed = false;
+  if (username == null || username.toString().length <= 0) {
+    console.log('Username not valid, please try again...');
+    if (password == null || password.toString().length <= 0) {
+      console.log('Password not valid, please try again...');
+    }
+  } else {
+    passed = true;
+  }
+  return passed;
+}
+
 // Routes
 app.post('/authorize', (req, res) => {
-  const { username, password } = req.body;
-  console.log(username);
-  res.send(`Hello ${username}! Your password is: ${password}.`);
+  const { txtUsername, txtPassword } = req.body;
+
+  if (validateCredentials(txtUsername, txtPassword)) {
+    res.send(true);
+    console.log(`Welcome ${txtUsername}! Your password is: ${txtPassword}`);
+  } else {
+    console.log('Failed');
+    res.sendFile(`${appDir}index.html`);
+  }
 });
 
 // Always last
