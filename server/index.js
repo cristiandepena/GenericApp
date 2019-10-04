@@ -34,6 +34,6 @@ app.listen(port, (err) => {
   if (err) {
     console.log('error made');
   }
-  console.log(`${appDir}index.html`);
+  console.log(`http://localhost:${port}`);
   console.log(`App running on: ${port}`);
 });
