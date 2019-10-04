@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const fs = require('fs');
+const users = require('../server/controllers/users');
+const database = require('./controllers/genericapp-database');
 
 const app = express();
 const port = 8001;
@@ -15,35 +16,10 @@ app.use(bodyParser.json());
 
 app.use(express.static(appDir));
 
-function validateCredentials(username, password) {
-  let passed = false;
-  if (username == null || username.toString().length <= 0) {
-    console.log('Username not valid, please try again...');
-  } else if (password == null || password.toString().length <= 0) {
-    console.log('Password not valid, please try again...');
-  } else {
-    const users = fs.readFileSync(path.join(dir, 'users.json'));
-    const { username: user, password: pw } = JSON.parse(users);
-
-    if (username === user && password === pw) {
-      console.log(`${user} ${pw}`);
-    }
-    passed = true;
-  }
-  return passed;
-}
+database.connect();
 
 // Routes
-app.post('/authorize', (req, res) => {
-  const { username, password } = req.body;
-  if (validateCredentials(username, password)) {
-    res.send(true);
-    console.log(`Welcome ${username}! Your password is: ${password}`);
-  } else {
-    console.log('Failed');
-    res.send(false);
-  }
-});
+app.post('/authorize', users.validateCredentials);
 
 // Always last
 app.get('*', (req, res) => {
