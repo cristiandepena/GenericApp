@@ -1,13 +1,18 @@
 const { con } = require('../controllers/genericapp-database');
 
 function validateCredentials(req, res) {
+  let responseMessage;
   const { username, password } = req.body;
 
   // Validate user input
   if (username == null || username.toString().length <= 0) {
-    console.log('Username not valid, please try again...');
+    responseMessage = 'Username not valid, please try again...';
+    console.log(responseMessage);
+    res.status(500).send(responseMessage);
   } else if (password == null || password.toString().length <= 0) {
-    console.log('Password not valid, please try again...');
+    responseMessage = 'Password not valid, please try again...';
+    console.log(responseMessage);
+    res.status(500).send(responseMessage);
   } else {
     con.query({
       sql: `SELECT username, password from users where username = '${username}' and password = '${password}';`,
@@ -26,8 +31,9 @@ function validateCredentials(req, res) {
           res.status(500).send();
         }
       } else {
-        console.log('No user found!');
-        res.status(500).send();
+        responseMessage = 'Invalid credentials.';
+        console.log(responseMessage);
+        res.status(500).send(responseMessage);
       }
     });
   }
