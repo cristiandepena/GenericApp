@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GenericApp</title>
+
+    <!-- Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body class="grey darken-1">
+    <div class="container">
+        <div class="row">
+            <div class="col s4 push-s4 center">
+                <div class="card blue-grey darken-3 hoverable">
+                    <form id="loginForm" action="/authorize" method="POST">
+                        <div class="card-content white-text">
+                            <span class="card-title">Login</span>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="txtUsername" id="txtUsername">
+                                    <label for="txtUsername">Username</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="password" name="txtPassword" id="txtPassword">
+                                    <label for="txtPassword">Password</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <button id="btnSubmit" type="button" class="waves-effect btn">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>
