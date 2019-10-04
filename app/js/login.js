@@ -5,12 +5,19 @@ $('#btnSubmit').click(() => {
     username: txtUsername,
     password: txtPassword,
   };
-  console.log(data);
-  $.post('/authorize', data, (response) => {
-    if (response) {
-      window.location.href = '/';
-    } else {
-      window.alert('Login authentication failed!');
-    }
-  });
+
+  $.post('/authorize', data)
+    .done((response) => {
+      console.log('Received response status: 200.');
+      if (response) {
+        window.location.href = '/';
+      } else {
+        console.log(response);
+        alert('Invalid object received from server!');
+      }
+    })
+    .fail((response) => {
+      console.log('Received response status: 500.', response.responseText);
+      alert(`Login failed! ${response.responseText}`);
+    });
 });
