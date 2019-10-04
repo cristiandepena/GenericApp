@@ -7,6 +7,10 @@ $('#btnSubmit').click(() => {
   };
   console.log(data);
   $.post('/authorize', data, (response) => {
-    console.log(response);
+    if (response) {
+      window.location.href = '/';
+    } else {
+      window.alert('Login authentication failed!');
+    }
   });
 });
