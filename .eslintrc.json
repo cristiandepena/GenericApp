@@ -11,7 +11,8 @@
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly",
-        "$": "readonly"
+        "$": "readonly",
+        "Cookies": "readonly"
     },
     "parserOptions": {
         "ecmaVersion": 2018
