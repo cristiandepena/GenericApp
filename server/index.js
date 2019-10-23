@@ -19,9 +19,11 @@ app.use(express.static(appDir));
 
 database.connect();
 
-// Routes
+// API
 app.post('/authorize', users.validateCredentials);
+app.post('/register', register.addUser);
 
+// Routes
 app.get('/login', (req, res) => {
   res.sendFile(`${appDir}login.html`);
 });
@@ -29,8 +31,6 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {
   res.sendFile(`${appDir}register.html`);
 });
-
-app.post('/register', register.addUser);
 
 // Always last
 app.get('/', (req, res) => {
