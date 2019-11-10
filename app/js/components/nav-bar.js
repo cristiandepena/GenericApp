@@ -7,7 +7,8 @@ class NavBar extends HTMLElement {
           <nav class="blue-grey">
               <div class="nav-wrapper">
                   <div class="col s12">
-                      <a href="/" class="brand-logo">GenericApp</a>
+                      <a href="/" class="left brand-logo">GenericApp</a>
+                      <user-menu></user-menu>
                   </div>
               </div>
           </nav>
