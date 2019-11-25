@@ -17,10 +17,13 @@
   },
   "homepage": "https://github.com/cristiandepena/GenericApp#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "eslint-config-airbnb": "^18.0.1",
     "express": "^4.17.1",
-    "body-parser": "^1.19.0",
-    "mysql": "^2.17.1"
+    "mysql": "^2.17.1",
+    "mysql2": "^2.0.1",
+    "sequelize": "^5.21.2",
+    "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
     "eslint": "^6.5.1",
