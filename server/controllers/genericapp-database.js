@@ -1,21 +1,15 @@
-const mysql = require('mysql');
+const Sequelize = require('sequelize');
 
-const con = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  password: 'gigiWP123',
-  port: '3306',
-  database: 'genericapp',
+// Option 1: Passing parameters separately
+module.exports = new Sequelize('genericapp', 'root', 'gigiWP123', {
+    host: 'localhost',
+    dialect: 'mysql',
+    logging: console.log,
+
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    },
 });
-
-function connect() {
-  con.connect((err) => {
-    if (err) throw err;
-    console.log('Connected!');
-  });
-}
-
-module.exports = {
-  connect,
-  con,
-};

@@ -11,13 +11,20 @@ const dir = path.join(__dirname, '/../');
 const appDir = path.join(dir, '/app/');
 
 app.use(bodyParser.urlencoded({
-  extended: true,
+    extended: true,
 }));
 app.use(bodyParser.json());
 
 app.use(express.static(appDir));
 
-database.connect();
+database
+    .authenticate()
+    .then(() => {
+        console.log('Connected!');
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+    });
 
 // API
 app.post('/authorize', users.validateCredentials);
@@ -25,22 +32,22 @@ app.post('/register', register.addUser);
 
 // Routes
 app.get('/login', (req, res) => {
-  res.sendFile(`${appDir}login.html`);
+    res.sendFile(`${appDir}login.html`);
 });
 
 app.get('/register', (req, res) => {
-  res.sendFile(`${appDir}register.html`);
+    res.sendFile(`${appDir}register.html`);
 });
 
 // Always last
 app.get('/', (req, res) => {
-  res.sendFile(`${appDir}index.html`);
+    res.sendFile(`${appDir}index.html`);
 });
 
 app.listen(port, (err) => {
-  if (err) {
-    console.log('error made');
-  }
-  console.log(`http://localhost:${port}`);
-  console.log(`App running on: ${port}`);
+    if (err) {
+        console.log('error made');
+    }
+    console.log(`http://localhost:${port}`);
+    console.log(`App running on: ${port}`);
 });
