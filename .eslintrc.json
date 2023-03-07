@@ -12,7 +12,8 @@
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly",
         "$": "readonly",
-        "Cookies": "readonly"
+        "Cookies": "readonly",
+        "Vue": "readonly"
     },
     "parserOptions": {
         "ecmaVersion": 2018
